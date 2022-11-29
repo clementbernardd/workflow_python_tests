@@ -1,0 +1,49 @@
+# action.yml
+name: 'Python Lintage and tests'
+description: 'Do lintage tests and check code standards.'
+author: 'Clément Bernard'
+branding:
+  icon: 'check-square'
+  color: 'blue'
+inputs:
+  WORKDIR:
+    description: 'Current directory where are stored the data. Default to src.'
+    required: false
+    default: 'src'
+  TEST_DIR:
+    description: 'Directory to the unit tests. Default to tests/unit.'
+    required: false
+    default: 'tests/unit'
+  MAX_LINE_LENGTH:
+    description: 'Maximum number of characters in lines for the black format.'
+    required: false
+    default: 99
+  COMPLEXITY_SCORE:
+    description: 'Threshold for the complexity of the score. Default to 2.'
+    required: false
+    default: 2
+  COVERAGE_SCORE:
+    description: 'Threshold for the coverage score. Default to 50. Maximum of 100.'
+    required: false
+    default: 50
+  DOCUMENTATION_SCORE:
+    description: 'Threshold for the documentation score. Default to 5. Maximum of 10.'
+    required: false
+    default: 5
+outputs:
+  complexity_score: # id of output
+    description: 'Score of complexity'
+  coverage_score:
+    description: 'Score of unit test coverage'
+  documentation_score:
+    description: 'Score of overall documentation'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.WORKDIR }}
+    - ${{ inputs.TEST_DIR }}
+    - ${{ inputs.MAX_LINE_LENGTH }}
+    - ${{ inputs.COMPLEXITY_SCORE}}
+    - ${{ inputs.COVERAGE_SCORE}}
+    - ${{ inputs.DOCUMENTATION_SCORE}}
