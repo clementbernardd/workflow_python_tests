@@ -1,0 +1,33 @@
+name: Test
+on:
+  pull_request
+jobs:
+  python_lintage:
+    name: Lintage
+    runs-on: ubuntu-22.04
+    outputs:
+      complexity_score: ${{ steps.lintage.outputs.complexity_score }}
+      coverage_score: ${{ steps.lintage.outputs.coverage_score }}
+      documentation_score: ${{ steps.lintage.outputs.documentation_score }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        id: lintage
+        with:
+          WORKDIR: 'code_example/'
+          TEST_DIR: 'tests/unit'
+          MAX_LINE_LENGTH: 99
+          COMPLEXITY_SCORE: 2
+          COVERAGE_SCORE: 50
+          DOCUMENTATION_SCORE: 5
+
+  check-output :
+    name: Check outputs
+    needs: python_lintage
+    if : ${{ always() }}
+    runs-on: ubuntu-22.04
+    steps:
+      - run: |
+          echo "Complexity score : ${{ needs.python_lintage.outputs.complexity_score }}"
+          echo "Coverage score: ${{ needs.python_lintage.outputs.coverage_score }}"
+          echo "Documentation score : ${{ needs.python_lintage.outputs.documentation_score }}"
