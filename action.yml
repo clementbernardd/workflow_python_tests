@@ -1,5 +1,5 @@
 # action.yml
-name: 'Python Lintage and tests'
+name: 'Python Lintage/Tests'
 description: 'Do lintage tests and check code standards.'
 author: 'Clément Bernard'
 branding:
