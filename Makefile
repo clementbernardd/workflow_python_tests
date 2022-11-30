@@ -1,28 +1,3 @@
-# Path to check the code
-ifeq ($(PATH_TO_CODE),)
-export PATH_TO_CODE=src
-endif
-# Path to the unit tests
-ifeq ($(PATH_TO_UNIT_TESTS),)
-export PATH_TO_UNIT_TESTS=tests/unit
-endif
-
-# Score thresholds
-ifeq ($(COVERAGE_SCORE),)
-export COVERAGE_SCORE:= 50
-endif
-ifeq ($(COMPLEXITY_SCORE),)
-export COMPLEXITY_SCORE := 2
-endif
-ifeq ($(DOCUMENTATION_SCORE),)
-export DOCUMENTATION_SCORE:= 5
-endif
-
-# Max line length for black
-ifeq ($(MAX_LINE_LENGTH), )
-MAX_LINE_LENGTH=99
-endif
-
 export PYTHON?=python -m
 
 # Path to the lintage directory

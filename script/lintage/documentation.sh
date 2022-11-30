@@ -3,9 +3,11 @@
 output=$($PYTHON pylint --disable=all --enable=C0111 ${PATH_TO_CODE})
 output1=$(ls .)
 output2=$(ls ${PATH_TO_CODE})
-echo "DOCUMENTATION : $output $output1 $output2"
+echo "DOCUMENTATION : $output $output1 "
+echo "OUTPUT LS : $output2"
+echo "PATH TO CODE : ${PATH_TO_CODE}"
 sleep 10
-score=$( $PYTHON pylint --disable=all --enable=C0111 ${PATH_TO_CODE} | tail -n2 | head -n1 | cut -f7 -d " " | cut -f1 -d/)
+score=$( $PYTHON pylint --disable=all --enable=C0111 ${PATH_TO_CODE}/ | tail -n2 | head -n1 | cut -f7 -d " " | cut -f1 -d/)
 echo "documentation_score=$score" >> $GITHUB_OUTPUT
 echo "SCORE PYLINT : ${score} | ACCEPTABLE SCORE : ${DOCUMENTATION_SCORE}"
 condition=`echo "$score>=$DOCUMENTATION_SCORE" | bc -l`
