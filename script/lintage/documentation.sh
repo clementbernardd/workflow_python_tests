@@ -1,7 +1,9 @@
 #!/bin/bash
 
 output=$($PYTHON pylint --disable=all --enable=C0111 ${PATH_TO_CODE})
-echo "DOCUMENTATION : $output"
+output1=$(ls .)
+output2=$(ls ${PATH_TO_CODE})
+echo "DOCUMENTATION : $output $output1 $output2"
 sleep 10
 score=$( $PYTHON pylint --disable=all --enable=C0111 ${PATH_TO_CODE} | tail -n2 | head -n1 | cut -f7 -d " " | cut -f1 -d/)
 echo "documentation_score=$score" >> $GITHUB_OUTPUT
