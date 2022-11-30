@@ -15,7 +15,7 @@ if [ -f "requirements.txt" ]; then
   pip install -r requirements.txt
 fi
 
-## As the workdir for github actions isn't the default one, copy the testing commands in /app/code
+## As the workdir for github actions isn't the default one, copy the testing commands in current directory
 cp -r /app/script /app/entrypoint.sh /app/Makefile .
 
 # Command to launch all the tests at once
