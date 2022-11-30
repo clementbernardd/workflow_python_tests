@@ -17,7 +17,6 @@ fi
 
 ## As the workdir for github actions isn't the default one, copy the testing commands in /app/code
 cp -r /app/script /app/entrypoint.sh /app/Makefile .
-cd /app
 
 # Command to launch all the tests at once
 make all_tests
