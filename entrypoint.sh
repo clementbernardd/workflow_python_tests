@@ -19,8 +19,8 @@ if [ -f "requirements.txt" ]; then
 fi
 
 ## As the workdir for github actions isn't the default one, copy the testing commands in /app/code
-mkdir /app/$CODE_PATH
-cp -r ./ /app/$CODE_PATH/
+mkdir -p $CODE_PATH
+cp -r ./ $CODE_PATH/
 cd /app
 
 # Command to launch all the tests at once
