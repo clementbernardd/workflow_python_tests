@@ -8,10 +8,10 @@ export COMPLEXITY_SCORE=$INPUT_COMPLEXITY_SCORE
 export COVERAGE_SCORE=$INPUT_COVERAGE_SCORE
 export DOCUMENTATION_SCORE=$INPUT_DOCUMENTATION_SCORE
 
-# As the workdir for github actions isn't the default one, copy the testing commands here.
+## As the workdir for github actions isn't the default one, copy the testing commands here.
 cp -r /app/* .
 # Install missing libraries if neccessary
-if [[ -f "requirements.txt" ]]; then
+if [ -f "requirements.txt" ]; then
   pip install -r requirements.txt
 fi
 # Command to launch all the tests at once
